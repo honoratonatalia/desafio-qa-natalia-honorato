@@ -15,3 +15,16 @@ Projeto de automação de testes de API e interface (UI/BDD) desenvolvido para v
 1. Clone o repositório:
    ```bash
  git clone https://github.com/honoratonatalia/desafio-qa-natalia-honorato.git 
+
+
+ ## Testes de API (Postman)
+
+Os artefactos da API Demoblaze encontram-se na pasta `postman/`:
+- `postman/Desafio QA - Demoblaze API.postman_collection.json`SS
+- `postman/Demoblaze QA.postman_environment.json`
+
+### Como executar
+1. Abra o **Postman** e clique em **Import**.
+2. Selecione e importe os dois ficheiros `.json` da pasta `postman/`.
+3. No canto superior direito, selecione o ambiente **Demoblaze QA**.
+4. Abra a coleção **Desafio QA - Demoblaze API** e execute os cenários (ou utilize **Run** para correr em sequência).
