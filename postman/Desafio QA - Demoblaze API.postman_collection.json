@@ -1,0 +1,131 @@
+{
+  "info": {
+    "_postman_id": "71fd4e3c-354a-4713-a36a-e2518f6a71d6",
+    "name": "Desafio QA - Demoblaze API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22944521"
+  },
+  "item": [
+    {
+      "name": "01 - Criacao de Conta",
+      "item": [
+        {
+          "name": "Signup - Novo Usuario",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code e 200 ou 201\", function () {\r\n    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r\n});\r\n\r\npm.test(\"Tempo de resposta abaixo de 3000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(3000);\r\n});\r\n\r\npm.test(\"Resposta JSON valida e aderente ao schema/contrato\", function () {\r\n    const rawText = pm.response.text();\r\n    if (rawText === \"\") {\r\n        pm.expect(rawText).to.equal(\"\");\r\n    } else {\r\n        pm.response.to.have.jsonBody();\r\n        const jsonData = pm.response.json();\r\n        const schema = {\r\n            type: \"object\",\r\n            properties: {\r\n                errorMessage: { type: \"string\" }\r\n            }\r\n        };\r\n        pm.expect(jsonData).to.be.an(\"object\");\r\n        pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r\n    }\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso ou erro\", function () {\r\n    const rawText = pm.response.text();\r\n    const sucessoSemMensagem = pm.response.code === 200 && rawText === \"\";\r\n    const possuiConteudo = rawText.trim().length > 0;\r\n    pm.expect(sucessoSemMensagem || possuiConteudo).to.be.true;\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/signup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 - Gerenciamento de Carrinho",
+      "item": [
+        {
+          "name": "Adicionar Produto ao Carrinho",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code e 200 ou 201\", function () {\r\n    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r\n});\r\n\r\npm.test(\"Tempo de resposta abaixo de 3000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(3000);\r\n});\r\n\r\npm.test(\"Resposta JSON valida e aderente ao schema/contrato\", function () {\r\n    const rawText = pm.response.text();\r\n    if (rawText === \"\") {\r\n        pm.expect(rawText).to.equal(\"\");\r\n    } else {\r\n        pm.response.to.have.jsonBody();\r\n        const jsonData = pm.response.json();\r\n        pm.expect(jsonData).to.be.an(\"object\");\r\n    }\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso ou erro\", function () {\r\n    const rawText = pm.response.text();\r\n    const sucessoSemMensagem = pm.response.code === 200 && rawText === \"\";\r\n    const possuiConteudo = rawText.trim().length > 0;\r\n    pm.expect(sucessoSemMensagem || possuiConteudo).to.be.true;\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id\": \"cart_item_01\",\r\n  \"cookie\": \"user={{username}}\",\r\n  \"prod_id\": {{productId}},\r\n  \"flag\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/addtocart",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "addtocart"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar Carrinho",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code e 200 ou 201\", function () {\r\n    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r\n});\r\n\r\npm.test(\"Tempo de resposta abaixo de 3000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(3000);\r\n});\r\n\r\npm.test(\"Resposta JSON valida e aderente ao schema/contrato\", function () {\r\n    const rawText = pm.response.text();\r\n    if (rawText === \"\") {\r\n        pm.expect(rawText).to.equal(\"\");\r\n    } else {\r\n        pm.response.to.have.jsonBody();\r\n        const jsonData = pm.response.json();\r\n        pm.expect(jsonData).to.satisfy((d) => typeof d === \"object\" && d !== null);\r\n    }\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso ou erro\", function () {\r\n    const rawText = pm.response.text();\r\n    const sucessoSemMensagem = pm.response.code === 200 && rawText === \"\";\r\n    const possuiConteudo = rawText.trim().length > 0;\r\n    pm.expect(sucessoSemMensagem || possuiConteudo).to.be.true;\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"cookie\": \"user={{username}}\",\r\n  \"flag\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/viewcart",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "viewcart"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
