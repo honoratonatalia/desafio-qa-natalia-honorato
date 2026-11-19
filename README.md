@@ -14,4 +14,4 @@ Projeto de automação de testes de API e interface (UI/BDD) desenvolvido para v
 ## Instalação e configuração
 1. Clone o repositório:
    ```bash
-   git clone git clone [https://github.com/honoratonatalia/desafio-qa-natalia-honorato.git](https://github.com/honoratonatalia/desafio-qa-natalia-honorato.git)
+ git clone https://github.com/honoratonatalia/desafio-qa-natalia-honorato.git 
