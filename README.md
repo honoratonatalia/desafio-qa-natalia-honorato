@@ -1,17 +1,17 @@
-# Desafio QA Tecnobank — Automação E2E (Demoblaze)
+# Desafio Técnico QA — Automação de Testes (Natalia Honorato)
 
-Projeto de automação de testes end-to-end para a aplicação **Demoblaze** utilizando **Cypress**, **Cucumber** (`@badeball/cypress-cucumber-preprocessor`) e **JavaScript**, com coleções de apoio na pasta `postman`.
+Projeto de automação de testes de API e interface (UI/BDD) desenvolvido para validação da aplicação **Demoblaze**, com coleções de apoio na pasta `postman`.
 
-## Estrutura do projeto
+## Tecnologias utilizadas
+* **UI e BDD:** Cypress, Cucumber (`@badeball/cypress-cucumber-preprocessor`) e JavaScript.
+* **API:** Postman e Newman.
+* **Controle de versão:** Git e GitHub.
 
-- `cypress/e2e/features/` — Cenários BDD em Gherkin (`cart.feature`, `signup.feature`).
-- `cypress/e2e/step_definitions/` — Implementação dos passos (`cart.steps.js`, `signup.steps.js`).
-- `postman/` — Coleções e requisições de apoio.
-- `cypress.config.js` — Configuração do Cypress e do pré-processador Cucumber.
-- `package.json` — Dependências e scripts do projeto.
+## Pré-requisitos
+* **Node.js** (versão LTS recomendada, ex.: v18 ou superior) e **npm**.
+* **Git**.
 
-## Como executar os testes
-
-1. Instale as dependências:
-   ```cmd
-   npm install 
+## Instalação e configuração
+1. Clone o repositório:
+   ```bash
+   git clone [https://github.com/honoratonatalia/desafio-qa-natalia-honorato.git](https://github.com/honoratonatalia/desafio-qa-natalia-honorato.git)
